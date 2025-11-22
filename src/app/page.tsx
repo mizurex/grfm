@@ -1,64 +1,73 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
+import RevenueCard from "@/components/cards/RevenueCard";
+import TransactionsCard from "@/components/cards/TransactionsCard";
+import RecentTransactionsCard from "@/components/cards/RecentTransactionCard";
+import ConversionRateCard from "@/components/cards/ConversionRateCard";
+import TotalExpenseCard from "@/components/cards/TotalExpenseCard";
+import ExchangeRateCard from "@/components/cards/ExchangeCard";
+import CreditScoreCard from "@/components/cards/CreditScore";
+
+export default function DodoPaymentsDashboard() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="grid h-screen w-screen grid-cols-1 overflow-hidden dark:bg-slate-900 lg:grid-cols-[280px_1fr]">
+      {/* Sidebar */}
+      <Sidebar 
+        isMobileMenuOpen={isMobileMenuOpen} 
+        onClose={() => setIsMobileMenuOpen(false)} 
+      />
+
+      {/* Backdrop for mobile */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+      )}
+
+      {/* Main Content */}
+      <main className="flex h-screen flex-col overflow-hidden">
+        {/* Header */}
+        <Header onMenuOpen={() => setIsMobileMenuOpen(true)} />
+
+        {/* Dashboard Content */}
+
+        <div className="w-full min-[1000px]:overflow-x-auto min-[1400px]:overflow-x-hidden bg-background overflow-y-auto mt-[4px]">
+
+<div className="w-full  min-[1400]:ml-8 min-[1500px]:ml-15 ">
+  <div className="pt-[2px] px-[16px] pb-[20px] w-full max-w-[1440px]">
+    
+    <div className="flex flex-col gap-4 lg:flex-row lg:gap-[20px]">
+
+      {/* Left Grid */}
+      <div className="grid grid-cols-1 gap-[20px] sm:grid-cols-2 lg:grid-cols-[352px_352px]">
+        <RevenueCard />
+        <TransactionsCard />
+        <RecentTransactionsCard />
+        <ConversionRateCard />
+      </div>
+
+      {/* Right Column */}
+      <div className="flex flex-col gap-[20px] lg:w-[352px] ">
+        <TotalExpenseCard />
+        <ExchangeRateCard />
+        <CreditScoreCard />
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+      
       </main>
     </div>
   );
