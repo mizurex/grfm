@@ -3,53 +3,10 @@ import { useState } from "react";
 
 export default function ExchangeRateCard() {
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
-  const [isTargetCurrencyOpen, setIsTargetCurrencyOpen] = useState(false);
 
   const toggleCurrencyDropdown = () => {
     setIsCurrencyOpen((prev) => !prev);
   };
-
-  const toggleTargetCurrencyDropdown = () => {
-    setIsTargetCurrencyOpen((prev) => !prev);
-  };
-  const activities = [
-    {
-      id: 1,
-      icon: <CheckIcon />,
-      bgColor: "bg-green-100 dark:bg-green-900/20",
-      iconColor: "text-green-600",
-      title: "Payment received",
-      description: "$2,400 from John Smith",
-      time: "2 hours ago",
-    },
-    {
-      id: 2,
-      icon: <UserIcon />,
-      bgColor: "bg-blue-100 dark:bg-blue-900/20",
-      iconColor: "text-blue-600",
-      title: "New user registered",
-      description: "Sarah Johnson joined",
-      time: "4 hours ago",
-    },
-    {
-      id: 3,
-      icon: <DocumentIcon />,
-      bgColor: "bg-purple-100 dark:bg-purple-900/20",
-      iconColor: "text-purple-600",
-      title: "Invoice generated",
-      description: "INV-2024-001 created",
-      time: "6 hours ago",
-    },
-    {
-      id: 4,
-      icon: <ClockIcon />,
-      bgColor: "bg-yellow-100 dark:bg-yellow-900/20",
-      iconColor: "text-yellow-600",
-      title: "Payment pending",
-      description: "$1,200 awaiting approval",
-      time: "8 hours ago",
-    },
-  ];
 
   return (
     <DashboardCard className="w-full lg:w-[352px] h-auto lg:h-[380px] rounded-[16px] p-[16px] font-sans border border-primary/20">

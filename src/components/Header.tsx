@@ -158,7 +158,6 @@ export default function Header({ onMenuOpen }: HeaderProps) {
           </svg>
         </button>
 
-        {/* New Payment Button */}
         <button
           type="button"
           className="hidden sm:flex items-center gap-2 px-[12px] py-[10px] rounded-[10px] bg-[#335CFF]  transition-colors cursor-pointer"

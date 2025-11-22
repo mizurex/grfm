@@ -353,7 +353,7 @@
   }
 
   body {
-    @apply overscroll-y-none  bg-background text-foreground font-mono antialiased;
+    @apply overscroll-y-none  bg-background text-foreground font-sans antialiased;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
@@ -380,128 +380,6 @@
   }
 }
 
-@layer components {
-  [data-rehype-pretty-code-figure] {
-    @apply relative my-6 rounded-lg bg-code text-code-foreground;
-
-    pre {
-      @apply overflow-x-auto px-4 py-4 has-data-line-numbers:px-0;
-    }
-
-    code {
-      @apply font-mono text-sm;
-    }
-  }
-
-  [data-line] {
-    @apply py-0.5;
-  }
-
-  [data-rehype-pretty-code-title] {
-    @apply flex items-center gap-2 border-b px-4 py-2.5 text-sm text-muted-foreground [&_svg]:size-4 [&_svg]:text-muted-foreground;
-  }
-
-  [data-line-numbers] {
-    counter-reset: line;
-  }
-
-  [data-line-numbers] > [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-    @apply sticky left-0 inline-block w-16 bg-code pr-6 text-right text-sm text-code-number;
-  }
-
-  [data-line-numbers] [data-highlighted-line][data-line]::before {
-    @apply bg-code-highlight;
-  }
-
-  [data-highlighted-line] {
-    @apply bg-code-highlight;
-  }
-}
-[data-rehype-pretty-code-figure][data-theme="light"] [data-line] span {
-  color: var(--shiki-light) !important;
-}
-[data-rehype-pretty-code-figure][data-theme="dark"] [data-line] span {
-  color: var(--shiki-dark) !important;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
-  background-size: 30px 30px;
-  background-position: -5px -5px;
-}
-.container2 {
-  width: 100%;
-  height: 100%;
-  --color: #f7f7f7fa;
-  background-color: #ffffff;
-  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
-      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
-  background-size: 55px 55px;
-}
-
-@keyframes gradient-move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background-size: 300% 300%;
-  animation: gradient-move 3s linear infinite;
-}
-
-@theme inline {
-  --animate-meteor-effect: meteor 5s linear infinite;
-
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
-  }
-}
-
-/* From Uiverse.io by Gautammsharma */ 
-.grid-wrapper {
-  min-height: 100%;
-  width: 100%;
-  position: relative;
-  background-color: #f8fafc;
-}
-
-.grid-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  background-image: linear-gradient(to right, #e2e8f0 1px, transparent 1px),
-    linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
-  background-size: 20px 30px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 0%,
-    #000 60%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 0%,
-    #000 60%,
-    transparent 100%
-  );
-}
 
 @layer base {
   * {
@@ -512,46 +390,3 @@
   }
 }
 
-  /* Light mode: wipe up (bottom to top) */
-::view-transition-new(root) {
-  mask: linear-gradient(to top, black 0%, black 100%);
-  mask-size: 100% 0%;
-  mask-position: bottom;
-  mask-repeat: no-repeat;
-  animation: wipeUp 1s ease-in-out;
-  animation-fill-mode: both;
-}
-
-/* Dark mode: wipe down (top to bottom) */
-.dark::view-transition-new(root) {
-  mask: linear-gradient(to bottom, black 0%, black 100%);
-  mask-size: 100% 0%;
-  mask-position: top;
-  mask-repeat: no-repeat;
-  animation: wipeDown 1s ease-in-out;
-  animation-fill-mode: both;
-}
-
-::view-transition-old(root),
-.dark::view-transition-old(root) {
-  animation: none;
-  z-index: -1;
-}
-
-@keyframes wipeDown {
-  from {
-    mask-size: 100% 0%;
-  }
-  to {
-    mask-size: 100% 100%;
-  }
-}
-
-@keyframes wipeUp {
-  from {
-    mask-size: 100% 0%;
-  }
-  to {
-    mask-size: 100% 100%;
-  }
-}
