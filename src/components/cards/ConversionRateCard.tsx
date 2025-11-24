@@ -231,7 +231,7 @@ export default function ConversionRateCard() {
           <span className="text-[#525866] text-sm flex-wrap whitespace-nowrap ">
             Youtube Music
           </span>
-          <span className="  text-sm flex-wrap whitespace-nowrap">
+          <span className=" text-sm flex-wrap whitespace-nowrap">
             <span className="text-foreground font-medium">$79.99 </span>{" "}
             <span className="text-muted-foreground/80 text-xs flex-wrap whitespace-nowrap">
               /month

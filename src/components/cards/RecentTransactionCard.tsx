@@ -34,7 +34,7 @@ export default function RecentTransactionsCard() {
         <Badge>See All</Badge>
       </div>
 
-      <div className="mt-[16px] flex justify-between px-[4px] gap-[30px] bg-zinc-200/30 py-[6px] rounded-[10px]">
+      <div className="mt-[16px] flex justify-between px-[4px] gap-[30px] bg-zinc-200/20 py-[6px] rounded-[10px]">
         <TabButton
           isActive={activeButton === "Incoming"}
           onClick={() => setActiveButton("Incoming")}

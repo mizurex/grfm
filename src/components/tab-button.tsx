@@ -13,7 +13,7 @@ export default function TabButton({ children, isActive, onClick, className }: Ta
       onClick={onClick}
       className={cn(
         "rounded-[6px] px-[6px] py-[4px] transition-all duration-300 cursor-pointer",
-        isActive ? "bg-white shadow-lg" : "bg-transparent shadow-none",
+        isActive ? "bg-muted shadow-lg" : "bg-transparent shadow-none",
         className
       )}
     >
